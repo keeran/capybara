@@ -218,7 +218,7 @@ module Capybara
 
     #return node identified by locator or raise ElementNotFound(using desc)
     def locate(kind_or_locator, locator=nil, fail_msg = nil)
-      node = wait_conditionally_until { find(kind_or_locator, locator) }
+      node = wait_conditionally_until { find(kind_or_locator, locator, :visible => true) }
     ensure
       raise Capybara::ElementNotFound, fail_msg || "Unable to locate '#{kind_or_locator}'" unless node
       return node
